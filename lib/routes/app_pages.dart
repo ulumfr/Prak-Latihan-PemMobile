@@ -1,13 +1,16 @@
 import 'package:get/get.dart';
-import 'package:test_hotel/controllers/auth/auth_controler.dart';
+import 'package:test_hotel/controllers/auth/auth_controller.dart';
 import 'package:test_hotel/controllers/main/home/home_screen_controller.dart';
 import 'package:test_hotel/controllers/main/home/imagepicker_controller.dart';
 import 'package:test_hotel/controllers/main/home/webviewhotel_controller.dart';
 import 'package:test_hotel/controllers/main/main_screen_controller.dart';
 import 'package:test_hotel/controllers/onboarding/onboarding_screen_controller.dart';
 import 'package:test_hotel/controllers/onboarding/welcome_screen_controller.dart';
+import 'package:test_hotel/views/auth/screen/forgot_pass_screen.dart';
 import 'package:test_hotel/views/auth/screen/login_screen.dart';
+import 'package:test_hotel/views/auth/screen/reset_pass_screen.dart';
 import 'package:test_hotel/views/auth/screen/signup_screen.dart';
+import 'package:test_hotel/views/auth/screen/verify_forgot_screen.dart';
 import 'package:test_hotel/views/main/components/home/webview/webview_nearby.dart';
 import 'package:test_hotel/views/main/components/home/webview/webview_popular.dart';
 import 'package:test_hotel/views/main/main_screen.dart';
@@ -34,14 +37,35 @@ class AppRoutes {
       name: '/login',
       page: () => const LoginScreen(),
       binding: BindingsBuilder(() {
-        Get.lazyPut(() => AuthControler());
+        Get.lazyPut(() => AuthController());
       }),
     ),
     GetPage(
       name: '/signup',
       page: () => const SignupScreen(),
       binding: BindingsBuilder(() {
-        Get.lazyPut(() => AuthControler());
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/forgot',
+      page: () => const ForgotPassScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/verify',
+      page: () => const VerifyForgotScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
+      }),
+    ),
+    GetPage(
+      name: '/reset',
+      page: () => const ResetPassScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => AuthController());
       }),
     ),
     GetPage(
