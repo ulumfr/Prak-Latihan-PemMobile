@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_hotel/constants.dart';
-import 'package:test_hotel/controllers/auth/auth_controller.dart';
+import 'package:test_hotel/controllers/auth/appwrite/auth_appwrite_controller.dart';
 import 'package:test_hotel/views/auth/components/text_auth.dart';
 import 'package:test_hotel/views/auth/components/text_field_auth.dart';
 import 'package:test_hotel/views/auth/components/text_tittle_auth.dart';
 
-class ResetPassScreen extends GetView<AuthController> {
-  const ResetPassScreen({Key? key}) : super(key: key);
+class ResetPassAppwriteScreen extends GetView<AuthAppwriteController> {
+  const ResetPassAppwriteScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ResetPassScreen extends GetView<AuthController> {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                const TextTitleAuth(),
+                const TextTitleAuth(text: 'Hotels with Appwrite',),
                 Image.asset("assets/images/resetpassword.jpg", height: 250),
                 const Text(
                   "Reset Password",
@@ -51,9 +51,10 @@ class ResetPassScreen extends GetView<AuthController> {
                         fontweight: FontWeight.bold,
                       ),
                       const SizedBox(height: 8),
-                      const TextFieldAuth(
+                      TextFieldAuth(
+                        controller: controller.passwordController,
                         hintText: "enter your password",
-                        obsecureText: true,
+                        obsecureText: controller.isSecure,
                       ),
                       const SizedBox(height: 22),
                       const TextAuth(
@@ -61,24 +62,25 @@ class ResetPassScreen extends GetView<AuthController> {
                         fontweight: FontWeight.bold,
                       ),
                       const SizedBox(height: 8),
-                      const TextFieldAuth(
-                        hintText: "enter your password",
-                        obsecureText: true,
+                      TextFieldAuth(
+                        controller: controller.confPasswordController,
+                        hintText: "enter your confirm password",
+                        obsecureText: controller.isSecure,
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.goLogin();
-                            },
-                            child: const Text(
+                      GestureDetector(
+                        onTap: () {
+                          controller.goLogin();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
                               "LogIn",
                               style: TextStyle(
                                 color: AppColors.gray1Color,

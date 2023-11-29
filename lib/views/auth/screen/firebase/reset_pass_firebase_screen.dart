@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_hotel/constants.dart';
-import 'package:test_hotel/controllers/auth/auth_controller.dart';
+import 'package:test_hotel/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:test_hotel/views/auth/components/text_auth.dart';
 import 'package:test_hotel/views/auth/components/text_field_auth.dart';
 import 'package:test_hotel/views/auth/components/text_tittle_auth.dart';
 
-class ForgotPassScreen extends GetView<AuthController> {
-  const ForgotPassScreen({Key? key}) : super(key: key);
+class ResetPassFirebaseScreen extends GetView<AuthFirebaseController> {
+  const ResetPassFirebaseScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +18,20 @@ class ForgotPassScreen extends GetView<AuthController> {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                const TextTitleAuth(),
-                const SizedBox(height: 30),
-                Image.asset("assets/images/forgotpassword.png", height: 250),
-                const SizedBox(height: 20),
+                const TextTitleAuth(text: 'Hotels with Firebase',),
+                Image.asset("assets/images/resetpassword.jpg", height: 250),
                 const Text(
-                  "Forgot Password?",
+                  "Reset Password",
                   style: TextStyle(
                     color: AppColors.textColor,
+                    fontSize: 26,
                     fontWeight: FontWeight.w500,
-                    fontSize: 23,
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 20, right: 20, top: 10),
                   child: Text(
-                    "Don't worry it happens. Please enter your email address",
+                    "Enter your new password and confirm it",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: AppColors.gray3Color,
@@ -49,29 +47,41 @@ class ForgotPassScreen extends GetView<AuthController> {
                     children: [
                       const SizedBox(height: 24),
                       const TextAuth(
-                        labelText: "Email Address",
+                        labelText: "New Password",
                         fontweight: FontWeight.bold,
                       ),
                       const SizedBox(height: 8),
-                      const TextFieldAuth(
-                        hintText: "enter your email",
-                        obsecureText: false,
+                      TextFieldAuth(
+                        controller: controller.passwordController,
+                        hintText: "enter your password",
+                        obsecureText: controller.isSecure,
+                      ),
+                      const SizedBox(height: 22),
+                      const TextAuth(
+                        labelText: "Confirm Password",
+                        fontweight: FontWeight.bold,
+                      ),
+                      const SizedBox(height: 8),
+                      TextFieldAuth(
+                        controller: controller.confPasswordController,
+                        hintText: "enter your confirm password",
+                        obsecureText: controller.isSecure,
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              controller.goVerify();
-                            },
-                            child: const Text(
-                              "Submit",
+                      GestureDetector(
+                        onTap: () {
+                          controller.goLogin();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "LogIn",
                               style: TextStyle(
                                 color: AppColors.gray1Color,
                                 fontSize: 20,

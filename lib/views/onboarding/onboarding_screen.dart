@@ -13,7 +13,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.whiteColor,
+          backgroundColor: AppColors.gray1Color,
           elevation: 0,
           actions: [
             Padding(
@@ -21,7 +21,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
               child: GestureDetector(
                 onTap: () {
                   if (controller.currentIndex.value != geser.length - 1) {
-                    controller.skipToLoginScreen();
+                    controller.skipToAuthScreen();
                   }
                 },
                 child: Text(
@@ -38,6 +38,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
             ),
           ],
         ),
+        backgroundColor: AppColors.gray1Color,
         body: SizedBox(
           width: MediaQuery.sizeOf(context).width,
           height: MediaQuery.sizeOf(context).height,
@@ -62,7 +63,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                               children: [
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 0.5,
-                                  height: MediaQuery.sizeOf(context).height * 0.34,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.34,
                                   margin: const EdgeInsets.only(
                                     left: 150,
                                     top: 90,
@@ -81,7 +83,8 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                                 ),
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 0.5,
-                                  height: MediaQuery.sizeOf(context).height * 0.34,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.34,
                                   margin: const EdgeInsets.only(
                                     right: 150,
                                     bottom: 90,
@@ -164,7 +167,7 @@ class OnboardingScreen extends GetView<OnboardingScreenController> {
                   ),
                   onPressed: () {
                     if (controller.currentIndex.value == geser.length - 1) {
-                      controller.skipToLoginScreen();
+                      controller.skipToAuthScreen();
                     } else {
                       controller.pageController.nextPage(
                         duration: const Duration(milliseconds: 200),

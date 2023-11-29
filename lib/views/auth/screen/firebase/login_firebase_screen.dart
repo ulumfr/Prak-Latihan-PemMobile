@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_hotel/constants.dart';
-import 'package:test_hotel/controllers/auth/auth_controller.dart';
+import 'package:test_hotel/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:test_hotel/views/auth/components/more_auth.dart';
 import 'package:test_hotel/views/auth/components/text_auth.dart';
 import 'package:test_hotel/views/auth/components/text_field_auth.dart';
 import 'package:test_hotel/views/auth/components/text_tittle_auth.dart';
 
-class LoginScreen extends GetView<AuthController> {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginFirebaseScreen extends GetView<AuthFirebaseController> {
+  const LoginFirebaseScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class LoginScreen extends GetView<AuthController> {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                const TextTitleAuth(),
+                const TextTitleAuth(text: 'Hotels with Firebase',),
                 const SizedBox(height: 24),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 18),
@@ -53,7 +53,7 @@ class LoginScreen extends GetView<AuthController> {
                       const SizedBox(height: 8),
                       TextFieldAuth(
                         controller: controller.passwordController,
-                        obsecureText: true,
+                        obsecureText: controller.isSecure,
                         hintText: "enter your password",
                       ),
                       Row(
@@ -78,23 +78,23 @@ class LoginScreen extends GetView<AuthController> {
                         ],
                       ),
                       const SizedBox(height: 25),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                            onTap: controller.isLoading.value
-                                ? null
-                                : () {
-                                    controller.loginUser(
-                                      controller.emailController.text,
-                                      controller.passwordController.text,
-                                    );
-                                  },
+                      GestureDetector(
+                        onTap: controller.isLoading.value
+                            ? null
+                            : () {
+                                controller.loginUserFirebase(
+                                  controller.emailController.text,
+                                  controller.passwordController.text,
+                                );
+                              },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Center(
                             child: controller.isLoading.value
                                 ? const CircularProgressIndicator()
                                 : const Text(

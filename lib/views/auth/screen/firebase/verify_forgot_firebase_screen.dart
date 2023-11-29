@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_hotel/constants.dart';
-import 'package:test_hotel/controllers/auth/auth_controller.dart';
+import 'package:test_hotel/controllers/auth/firebase/auth_firebase_controller.dart';
 import 'package:test_hotel/views/auth/components/text_field_otp_auth.dart';
 
-class VerifyForgotScreen extends GetView<AuthController> {
-  const VerifyForgotScreen({Key? key}) : super(key: key);
+class VerifyForgotFirebaseScreen extends GetView<AuthFirebaseController> {
+  const VerifyForgotFirebaseScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,19 +86,19 @@ class VerifyForgotScreen extends GetView<AuthController> {
                 const SizedBox(height: 70),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 18),
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          controller.goResetPass();
-                        },
-                        child: const Text(
+                  child: GestureDetector(
+                    onTap: () {
+                      controller.goResetPass();
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Center(
+                        child: Text(
                           "Confirm",
                           style: TextStyle(
                             color: AppColors.gray1Color,

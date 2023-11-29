@@ -24,7 +24,7 @@ class MoreAuth extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
+              GestureDetector(
                 onTap: () {},
                 child: Image.asset(
                   'assets/images/logo-google.png',
@@ -32,7 +32,7 @@ class MoreAuth extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              InkWell(
+              GestureDetector(
                 onTap: () {},
                 child: Image.asset(
                   'assets/images/logo-fb.png',
@@ -40,7 +40,7 @@ class MoreAuth extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              InkWell(
+              GestureDetector(
                 onTap: () {},
                 child: Image.asset(
                   'assets/images/logo-apple.png',

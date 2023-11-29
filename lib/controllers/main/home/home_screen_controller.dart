@@ -7,7 +7,6 @@ import 'package:test_hotel/models/main/vertical_card_model.dart';
 class HomeScreenController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseStorage storage = FirebaseStorage.instance;
-
   RxList<HotelHorizontalCard> hotelsHorizontal = <HotelHorizontalCard>[].obs;
   RxList<HotelVerticalCard> hotelsVertical = <HotelVerticalCard>[].obs;
 
@@ -46,9 +45,6 @@ class HomeScreenController extends GetxController {
           "photo": downloadUrl,
         }));        
       }
-      // if (i == 7) {
-      //   break;
-      // }
     }
     hotelsHorizontal.assignAll(hotelHorizontalList);
     hotelsVertical.assignAll(hotelVerticalList);

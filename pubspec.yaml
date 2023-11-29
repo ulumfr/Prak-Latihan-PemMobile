@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  appwrite: ^11.0.1
   cached_network_image: ^3.3.0
   cloud_firestore: ^4.13.0
   cupertino_icons: ^1.0.2
@@ -37,7 +38,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.6
-  http: ^1.1.0
+  http: ^1.0.0
   image_picker: ^1.0.4
   webview_flutter: ^4.4.2
 
