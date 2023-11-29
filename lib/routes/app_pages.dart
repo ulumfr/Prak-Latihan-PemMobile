@@ -10,7 +10,7 @@ import 'package:test_hotel/controllers/onboarding/onboarding_screen_controller.d
 import 'package:test_hotel/controllers/onboarding/welcome_screen_controller.dart';
 import 'package:test_hotel/views/auth/auth_screen.dart';
 import 'package:test_hotel/views/auth/screen/appwrite/forgot_pass_appwrite_screen.dart';
-import 'package:test_hotel/views/auth/screen/appwrite/login_firebase_appwrite_screen.dart';
+import 'package:test_hotel/views/auth/screen/appwrite/login_appwrite_screen.dart';
 import 'package:test_hotel/views/auth/screen/appwrite/reset_pass_appwrite_screen.dart';
 import 'package:test_hotel/views/auth/screen/appwrite/signup_appwrite_screen.dart';
 import 'package:test_hotel/views/auth/screen/appwrite/verify_forgot_appwrite_screen.dart';
